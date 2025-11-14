@@ -1,0 +1,28 @@
+<div class="card p-4">
+<h3>Todo</h3>
+
+<input class="form-control mb-2" placeholder="Search..." [(ngModel)]="q" name="q">
+
+<form [formGroup]="form" (ngSubmit)="add()">
+<input class="form-control mb-2" formControlName="title" placeholder="Title">
+<input class="form-control mb-2" formControlName="description" placeholder="Description">
+<input class="form-control mb-2" type="date" formControlName="dueDate">
+<button class="btn btn-success mb-2">Add</button>
+</form>
+
+<button class="btn btn-outline-primary me-2" (click)="filter='all'">All</button>
+<button class="btn btn-outline-primary me-2" (click)="filter='pending'">Pending</button>
+<button class="btn btn-outline-primary me-2" (click)="filter='completed'">Completed</button>
+<button class="btn btn-danger float-end" (click)="logout()">Logout</button>
+
+<ul class="list-group mt-3">
+ <li *ngFor="let t of tasks" class="list-group-item d-flex justify-content-between">
+   <div>
+     <input type="checkbox" [checked]="t.done" (change)="toggle(t.id)">
+     <strong [ngClass]="{'text-decoration-line-through': t.done}">{{t.title}}</strong>
+     <div class="small text-muted">{{t.description}}</div>
+   </div>
+   <button class="btn btn-danger btn-sm" (click)="remove(t.id)">Delete</button>
+ </li>
+</ul>
+</div>

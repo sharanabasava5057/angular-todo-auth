@@ -1,0 +1,10 @@
+<div class="card p-4">
+<h3>Login</h3>
+<form [formGroup]="form" (ngSubmit)="submit()">
+<input class="form-control mb-2" formControlName="email" placeholder="Email">
+<input class="form-control mb-2" type="password" formControlName="password" placeholder="Password">
+<div class="text-danger">{{msg}}</div>
+<button class="btn btn-primary">Login</button>
+<a routerLink="/signup" class="btn btn-link">Create Account</a>
+</form>
+</div>
